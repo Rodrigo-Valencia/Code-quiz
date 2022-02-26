@@ -33,10 +33,6 @@ var currentTime = document.querySelector("#currentTime");
 var timer = document.querySelector("#startTime");
 var questionsDiv = document.querySelector("#questionsDiv");
 var wrapper = document.querySelector("#wrapper");
-//var highScore = document.querySelector("#high-score");
-//var reset = document.querySelector("#reset");
-//var returN = document.querySelector("#returN"); 
-
 
 var secondsLeft = 70;
 var holdInterval = 0;
@@ -141,13 +137,14 @@ function allDone() {
 
     var createSubmit = doucment.createElement("button");
     createSubmit.setAttribute("type", "submit");
-    createSubmit.setAttribute("id", "submit");
+    createSubmit.setAttribute("id", "Submit");
     createSubmit.textContent = "Submit";
 
     questionsDiv.appendChild(createSubmit);
 
     createSubmit.addEventListener("click", function() {
-        var inistals = createInput.value;
+        var initials = createInput.value;
+        
         if (initials === null) {
             console.log("No value entered! Please try again.");
         } else {
