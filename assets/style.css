@@ -1,0 +1,57 @@
+#wrapper {
+    position: absolute;
+    left: 30%;
+    top: 20%;
+    width: 500px;
+    height: 500px;
+    border: 1px solid purple;
+}
+
+#start {
+    background-color: purple;
+    margin-left: 30%;
+    padding: 15px 30px;
+    font-size: 20px;
+    color: white;
+}
+
+#question {
+    margin: 20px;
+}
+
+#current-time {
+    float: right;
+}
+
+#return {
+    background-color: purple;
+    position: relative;
+    padding: 10px;
+    font-size: 20px;
+    color: white;
+    top: 30%;
+    left: 55%;
+    width: auto;
+    text-align: center;
+    text-decoration: none;
+}
+
+#reset {
+    background-color: purple;
+    position: relative;
+    padding: 10px;
+    font-size: 20px;
+    color: white;
+    top: 30%;
+    right: 5%;
+    text-align: center;
+}
+
+button {
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+}
+
