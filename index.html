@@ -4,9 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./assets/style.css">
+
+    <title>Code Quiz</title>
 </head>
+
 <body>
+    <!-- Question Page -->
+    <div id="wrapper">
+        <div id="current-time"></div>
+        <div id="questions">
+            <h1>Coding Quiz Questions</h1>
+            <p>Try to answer the following coding questions within the time limit. Note: incorrect answers will penalize your score and time by 10 seconds!</p>
+            <ul id="choices"></ul>
+            <button id="start">Start Quiz</button>
+        </div>
+    </div>
+    <!-- Highscore Page -->
+    <div id="highscore-wrapper">
+        <div id="current-time"></div>
+        <div id="questions">
+            <h1>Highscores</h1>
+            <ul id="highscore"></ul>
+            <button id="return">Return</button>
+            <button id="reset">Reset Highscores</button>
+        </div>
+    </div>
     
+
+    <script src="script.js"></script>
 </body>
 </html>
