@@ -5,7 +5,7 @@ var questions = [
         answer: "Alerts"
     }, 
     {
-        title: "The condition in an if/else statement in enclosed within .. ",
+        title: "The condition in an if/else statement in enclosed with .. ",
         choices: ["Quotes", "Curly Brackets", "Parentheses", "Square Brackets"],
         answer: "Parentheses"
     },
@@ -20,7 +20,7 @@ var questions = [
         answer: "Quotes"
     },
     {
-        title: "A very useful tool for used during development and debugging for printing content to the debugger is?",
+        title: "A very useful tool used during development and debugging for printing content to the debugger is?",
         choices: ["Javascript", "Terminal/Bash", "For Loops", "Console Log"],
         answer: "Console Log"
     },
@@ -29,13 +29,13 @@ var questions = [
 var score = 0;
 var questionIndex = 0;
 
-var currentTime = document.querySelector("#current-time");
-var timer = document.querySelector("#start");
-var questions = document.querySelector("#questions");
+var currentTime = document.querySelector("#currentTime");
+var timer = document.querySelector("#startTime");
+var questionsDiv = document.querySelector("#questionsDiv");
 var wrapper = document.querySelector("#wrapper");
-var highScore = document.querySelector("#high-score");
-var reset = document.querySelector("#reset");
-var returN = document.querySelector("#return"); 
+//var highScore = document.querySelector("#high-score");
+//var reset = document.querySelector("#reset");
+//var returN = document.querySelector("#returN"); 
 
 
 var secondsLeft = 70;
@@ -56,23 +56,23 @@ timer.addEventListener("click", function () {
             }
         }, 1000);
     }
-    generate(questions);
+    generate(questionIndex);
 });
 
-function generate(questions) {
-    questions.innerHTML = "";
+function generate(questionIndex) {
+    questionsDiv.innerHTML = "";
     ulCreate.innerHTML = "";
 
     for (var i = 0; i < questions.length; i++) {
         var userQuestions = questions[questionIndex].title;
         var userChoices = questions[questionIndex].choices;
-        questions.textContent = userQuestions;
+        questionsDiv.textContent = userQuestions;
     }
 
     userChoices.forEach(function (newItem) {
         var listItem = document.createElement("li");
         listItem.textContent = newItem;
-        questions.appendChild(ulCreate);
+        questionsDiv.appendChild(ulCreate);
         ulCreate.appendChild(listItem);
         listItem.addEventListener("click", (compare));
     })
@@ -99,23 +99,23 @@ function compare(event) {
     } else {
         generate(questionIndex);
     }
-    questions.appendChild(createDiv);
+    questionsDiv.appendChild(createDiv);
 }
 
 function allDone() {
-    questions.innerHTML = "";
+    questionsDiv.innerHTML = "";
     currentTime.innerHTML = "";
 
     var createH1 = document.createElement("h1");
     createH1.setAttribute("id", "createH1");
     createH1.textContent = "All Done!"
 
-    questions.appendChild(createH1);
+    questionsDiv.appendChild(createH1);
 
     var createP = document.createElement("p");
     createP.setAttribute("id", "createP");
     
-    questions.appendChild(createP);
+    questionsDiv.appendChild(createP);
 
     if (secondsLeft >= 0) {
         var timeRemaining = secondsLeft;
@@ -123,32 +123,32 @@ function allDone() {
         clearInterval(holdInterval);
         createP.textContent = "Your final score is: " + timeRemaining;
 
-        questions.appendChild(createP2);
+        questionsDiv.appendChild(createP2);
     }
 
     var createLabel = document.createElement("label");
     createLabel.setAttribute("id", "createLabel");
     createLabel.textContent = "Enter your initials: ";
 
-    questions.appendChild(createLabel);
+    questionsDiv.appendChild(createLabel);
 
     var createInput = document.createElement("input");
     createInput.setAttribute("type", "text");
     createInput.setAttribute("id", "initials");
     createInput.textContent = "";
 
-    questions.appendChild(createInput);
+    questionsDiv.appendChild(createInput);
 
     var createSubmit = doucment.createElement("button");
     createSubmit.setAttribute("type", "submit");
     createSubmit.setAttribute("id", "submit");
     createSubmit.textContent = "Submit";
 
-    questions.appendChild(createSubmit);
+    questionsDiv.appendChild(createSubmit);
 
     createSubmit.addEventListener("click", function() {
         var inistals = createInput.value;
-        if (initails === null) {
+        if (initials === null) {
             console.log("No value entered! Please try again.");
         } else {
             var finalScore = {
@@ -160,35 +160,13 @@ function allDone() {
             if (allScores === null) {
                 allScores = [];
             } else {
-                allScores = JSON.parse(allScore);
+                allScores = JSON.parse(allScores);
             }
             allScores.push(finalScore);
             var newScore = JSON.stringify(allScores);
             localStorage.setItem("allScores", newScore);
 
-            //window.location.replace("./highscores.html");
+            window.location.replace("./highscore.html");
         }
     });
 }
-
-
-// Highscores
-reset.addEventListener("click", function(){
-    localStorage.clear();
-    location.reload();
-});
-
-var allScores = localStorage.getItem("allScores");
-allScores = JSON.parse(allScores);
-
-if (allScores !== null) {
-    for (var i = 0; i < allScores.length; i++) {
-        var createLi = document.createElement("li");
-        createLi.textContent = allScores[i].initials + " " + allScores[i].score;
-        highScore.appendChild(createLi);
-    }
-}
-
-returN.addEventListener("click", function(){
-    //window.location.replace("./index.html");
-});
