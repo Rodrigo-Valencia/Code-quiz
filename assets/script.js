@@ -135,7 +135,7 @@ function allDone() {
 
     questionsDiv.appendChild(createInput);
 
-    var createSubmit = doucment.createElement("button");
+    var createSubmit = document.createElement("button");
     createSubmit.setAttribute("type", "submit");
     createSubmit.setAttribute("id", "Submit");
     createSubmit.textContent = "Submit";
@@ -144,7 +144,7 @@ function allDone() {
 
     createSubmit.addEventListener("click", function() {
         var initials = createInput.value;
-        
+
         if (initials === null) {
             console.log("No value entered! Please try again.");
         } else {
