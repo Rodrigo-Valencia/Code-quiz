@@ -145,8 +145,9 @@ function allDone() {
     createSubmit.addEventListener("click", function() {
         var initials = createInput.value;
 
-        if (initials === null) {
-            console.log("No value entered! Please try again.");
+        if (initials === "") {
+            alert("No value entered! Please try again.");
+
         } else {
             var finalScore = {
                 initials: initials,
